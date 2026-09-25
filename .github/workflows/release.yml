@@ -35,7 +35,7 @@ jobs:
 
       - name: Package application
         shell: pwsh
-        run: Compress-Archive -Path 'Limeovery/bin/Release/*' -DestinationPath 'Limeovery-${{ github.ref_name }}-win-x64.zip' -CompressionLevel Optimal
+        run: Compress-Archive -Path 'Limeovery/bin/Release/*' -DestinationPath 'Limeovery-${{ github.ref_name }}-win-x64.zip' -CompressionLevel Optimal -Exclude '*.pdb'
 
       - name: Publish GitHub Release
         env:
