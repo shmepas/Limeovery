@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 //      Редакция
 //
 [assembly: AssemblyVersion("1.0.3.0")]
-[assembly: AssemblyFileVersion("1.2.5.0")]
+[assembly: AssemblyFileVersion("1.2.7.0")]
 [assembly: NeutralResourcesLanguage("ru")]

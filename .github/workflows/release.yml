@@ -35,7 +35,19 @@ jobs:
 
       - name: Package application
         shell: pwsh
-        run: Compress-Archive -Path 'Limeovery/bin/Release/*' -DestinationPath 'Limeovery-${{ github.ref_name }}-win-x64.zip' -CompressionLevel Optimal -Exclude '*.pdb'
+        run: |
+          Add-Type -AssemblyName System.IO.Compression.FileSystem
+          $source = (Resolve-Path 'Limeovery/bin/Release').Path
+          $destination = 'Limeovery-${{ github.ref_name }}-win-x64.zip'
+          $archive = [System.IO.Compression.ZipFile]::Open($destination, [System.IO.Compression.ZipArchiveMode]::Create)
+          try {
+            Get-ChildItem -LiteralPath $source -Recurse -File | Where-Object { $_.Extension -ne '.pdb' } | ForEach-Object {
+              $relativePath = [System.IO.Path]::GetRelativePath($source, $_.FullName).Replace([System.IO.Path]::DirectorySeparatorChar, '/')
+              [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($archive, $_.FullName, $relativePath, [System.IO.Compression.CompressionLevel]::Optimal) | Out-Null
+            }
+          } finally {
+            $archive.Dispose()
+          }
 
       - name: Publish GitHub Release
         env:
