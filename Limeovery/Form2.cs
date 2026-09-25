@@ -1,4 +1,6 @@
-﻿using System;
+// Copyright (c) 2026 shmepas. All rights reserved.
+
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;

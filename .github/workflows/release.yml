@@ -15,11 +15,17 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v4
 
-      - name: Set up MSBuild
-        uses: microsoft/setup-msbuild@v2
-
       - name: Build Release
-        run: msbuild Limeovery/Limeovery.csproj /m /p:Configuration=Release /p:Platform=AnyCPU /p:SignManifests=false /p:GenerateManifests=false
+        shell: pwsh
+        run: |
+          & dotnet msbuild Limeovery/Limeovery.csproj /m /p:Configuration=Release /p:Platform=AnyCPU /p:SignManifests=false /p:GenerateManifests=false /nologo /v:minimal *> msbuild.log
+          $buildExitCode = $LASTEXITCODE
+          Get-Content msbuild.log | ForEach-Object { Write-Host $_ }
+          if ($buildExitCode -ne 0) {
+            '### Build Release failed' | Add-Content $env:GITHUB_STEP_SUMMARY
+            Get-Content msbuild.log -Tail 100 | Add-Content $env:GITHUB_STEP_SUMMARY
+            exit $buildExitCode
+          }
 
       - name: Package application
         shell: pwsh

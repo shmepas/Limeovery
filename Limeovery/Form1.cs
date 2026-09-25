@@ -1,4 +1,6 @@
-﻿using Microsoft.Win32;
+// Copyright (c) 2026 shmepas. All rights reserved.
+
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

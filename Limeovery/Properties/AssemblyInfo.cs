@@ -1,4 +1,4 @@
-﻿using System.Resources;
+using System.Resources;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -7,12 +7,12 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
 [assembly: AssemblyTitle("Limeovery")]
-[assembly: AssemblyDescription("прочитал - лох!")]
+[assembly: AssemblyDescription("Панель системных инструментов для Windows")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("clapapopa")]
+[assembly: AssemblyCompany("shmepas")]
 [assembly: AssemblyProduct("Limeovery")]
-[assembly: AssemblyCopyright("Copyright ©  2026")]
-[assembly: AssemblyTrademark("mite")]
+[assembly: AssemblyCopyright("Copyright © 2026 shmepas. All rights reserved.")]
+[assembly: AssemblyTrademark("Limeovery")]
 [assembly: AssemblyCulture("")]
 
 // Установка значения False для параметра ComVisible делает типы в этой сборке невидимыми
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 //      Редакция
 //
 [assembly: AssemblyVersion("1.0.3.0")]
-[assembly: AssemblyFileVersion("1.2.1.0")]
+[assembly: AssemblyFileVersion("1.2.2.0")]
 [assembly: NeutralResourcesLanguage("ru")]
