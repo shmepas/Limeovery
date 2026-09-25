@@ -1,0 +1,31 @@
+name: Build and publish release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build Release
+        run: msbuild Limeovery/Limeovery.csproj /m /p:Configuration=Release /p:Platform=AnyCPU /p:SignManifests=false /p:GenerateManifests=false
+
+      - name: Package application
+        shell: pwsh
+        run: Compress-Archive -Path 'Limeovery/bin/Release/*' -DestinationPath 'Limeovery-${{ github.ref_name }}-win-x64.zip' -CompressionLevel Optimal
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${{ github.ref_name }}" "Limeovery-${{ github.ref_name }}-win-x64.zip" --generate-notes --title "Limeovery ${{ github.ref_name }}"

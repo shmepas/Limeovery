@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.menuProcess = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.завершитьПроцессToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обновитьСписокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,7 +76,6 @@
             this.обновитьСписокToolStripMenuItem});
             this.menuProcess.Name = "menuProcess";
             this.menuProcess.Size = new System.Drawing.Size(185, 48);
-            
             // 
             // завершитьПроцессToolStripMenuItem
             // 
@@ -99,7 +98,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(800, 20);
             this.textBox1.TabIndex = 12;
-            this.textBox1.Text = "Поиск";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Form2

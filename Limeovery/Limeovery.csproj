@@ -48,7 +48,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
     <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
   </PropertyGroup>
   <PropertyGroup />
@@ -76,9 +76,15 @@
   <PropertyGroup>
     <StartupObject>Limeovery.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -121,25 +127,481 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="app.manifest" />
     <None Include="Limeovery_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Tools\SU\othersoftware\avz4\Base\backup.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\bt.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\esc.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\exc.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\extract.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\keylogger.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\krnldrv.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\lang_en.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\lang_ru.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main001.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main002.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main003.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main004.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main005.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main006.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main007.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main008.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main009.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main010.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main011.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main012.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main013.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main014.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main015.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main016.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main017.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main018.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main019.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main020.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main021.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main022.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main023.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main024.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main025.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main026.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main027.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main028.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\main029.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\net.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\neural.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\neurald.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\neurale.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\neuralm.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\par.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\ports.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\prt.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\repair.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\rootkit.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\scripts.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\scu.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\signf001.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\signf002.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\signf003.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\signf004.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\signf005.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\signf006.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\signf007.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\signf008.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\signf009.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\signfusr.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\syscheck.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\sysipu.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\tsw-auto.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\tsw.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\update.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\Base\vse_ru.avz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\avz4\software.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\couitatools\software.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\explorerplusplus\App\AppInfo\appinfo.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\explorerplusplus\App\AppInfo\installer.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\explorerplusplus\App\AppInfo\Launcher\Custom.nsh">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\explorerplusplus\App\AppInfo\Launcher\Explorer++Portable.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\explorerplusplus\App\AppInfo\pac_installer_log.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++ Help.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\explorerplusplus\Data\settings\Explorer++PortableSettings.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\explorerplusplus\Other\Source\Explorer++Portable.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\explorerplusplus\Other\Source\PortableApps.comInstallerCustom.nsh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\explorerplusplus\software.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\ProcessHacker\software.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\ProcessHacker\x64\kprocesshacker.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\ProcessHacker\x64\ProcessHacker.sig">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\AppInfo\appinfo.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\AppInfo\installer.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\AppInfo\Launcher\Custom.nsh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\AppInfo\Launcher\TotalCommanderPortable.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\AppInfo\pac_installer_log.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\AppInfo\TotalCommander.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\DefaultData\settings\wincmd.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\CGLPT64.SYS">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\CGLPT9X.VXD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\CGLPTNT.SYS">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\DEFAULT.BAR">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\descript.ion">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\d\TOTALCMD.CHM">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\e\TOTALCMD.CHM">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_CHN.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_CHN.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_CZ.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_CZ.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_DAN.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_DAN.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_DEU.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_DEU.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_DUT.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_DUT.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_ENG.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_ESP.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_ESP.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_FRA.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_FRA.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_HUN.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_HUN.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_ITA.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_ITA.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_KOR.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_KOR.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_NOR.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_NOR.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_POL.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_POL.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_ROM.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_ROM.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_RUS.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_RUS.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_SK.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_SK.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_SVN.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_SVN.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_SWE.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_SWE.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_UKR.LNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_UKR.MNU">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\NO.BAR">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\SFXHEAD.SFX">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCUNIN64.WUL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCUNINST.WUL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TOTALCMD.EXE.MANIFEST">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TOTALCMD64.EXE.MANIFEST">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\VERTICAL.BAR">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\WCUNINST.WUL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\Data\settings\Buttonbars\DEFAULT.BAR">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\Data\settings\Buttonbars\DEFAULT.br2">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\Data\settings\Buttonbars\VERTICAL.BAR">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\Data\settings\Buttonbars\VERTICAL.br2">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\Data\settings\TotalCommanderPortableSettings.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\Data\settings\wincmd.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\Other\Source\PortableEditorAndExtViewer.nsh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\Other\Source\TotalCommanderPortable.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\othersoftware\totalcommander\software.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\restrictions\.rsu">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SU\restrictions\DisableTaskMgr.rsu">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -158,6 +620,532 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Lime.ico" />
+    <Content Include="Tools\EX\EX.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\PH\PH.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\bin\AntiGDI.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\bin\AntiGDI_Injector.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\bin\EasyHook.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\bin\EasyHook32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\bin\EasyHook32Svc.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\bin\EasyHook64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\bin\EasyHook64Svc.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\bin\EasyLoad32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\bin\EasyLoad64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\bin\su_updater.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\avz4\avz.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\couitatools\AdonisUI.ClassicTheme.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\couitatools\AdonisUI.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\couitatools\CouitaTools.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\couitatools\x64\activity.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\couitatools\x64\construction.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\couitatools\x64\ctp2.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\couitatools\x64\delete.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\couitatools\x64\download.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\AppInfo\appicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\AppInfo\appicon_128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\AppInfo\appicon_16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\AppInfo\appicon_32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\AppInfo\appicon_75.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\DefaultData\settings\config.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++32.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++CA.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++CS.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++DA.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++DE.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++ES.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++FA.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++FI.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++FR.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++HE.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++HU.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++IT.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++JA.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++KO.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++NL.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++NO.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++PL.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++PT.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++RO.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++RU.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++SI.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++SV.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++TR.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++UK.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++VI.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++ZH_CN.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Explorer++ZH_TW.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\History.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\Explorer++\Readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\App\readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\Data\settings\config.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\Explorer++Portable.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\help.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\Other\Help\images\donation_button.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\Other\Help\images\favicon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\Other\Help\images\help_background_footer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\Other\Help\images\help_background_header.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\Other\Help\images\help_logo_top.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\Other\Source\LauncherLicense.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\explorerplusplus\Other\Source\Readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\ProcessHacker\x64\dfsgdfgsdhdfh.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\ProcessHacker\x64\peview.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\ProcessHacker\x64\plugins\DotNetTools.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\ProcessHacker\x64\plugins\ExtendedNotifications.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\ProcessHacker\x64\plugins\ExtendedServices.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\ProcessHacker\x64\plugins\ExtendedTools.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\ProcessHacker\x64\plugins\HardwareDevices.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\ProcessHacker\x64\plugins\NetworkTools.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\ProcessHacker\x64\plugins\OnlineChecks.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\ProcessHacker\x64\plugins\SbieSupport.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\ProcessHacker\x64\plugins\ToolStatus.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\ProcessHacker\x64\plugins\Updater.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\ProcessHacker\x64\plugins\UserNotes.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\ProcessHacker\x64\plugins\WindowExplorer.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\AppInfo\appicon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\AppInfo\appicon_128.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\AppInfo\appicon_16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\AppInfo\appicon_256.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\AppInfo\appicon_32.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\AppInfo\appicon_75.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\AppInfo\Launcher\Splash.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\DefaultData\settings\tckey\Readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\DefaultData\Tabs\Readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\Readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\BLAKEX32.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\BLAKEX64.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\CABRK.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\d\TASTEN.TXT">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\e\KEYBOARD.TXT">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\FILTER32\AutoPitch.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\FILTER32\SoundTouchDLL.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\FILTER32\SoundTouchDLL_License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\FILTER32\vmr9rotator.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\FILTER64\AutoPitch.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\FILTER64\SoundTouchDLL_License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\FILTER64\SoundTouchDLL_x64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\FILTER64\vmr9rotator.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\FRERES32.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\HISTORY.TXT">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_CHN.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_CZ.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_DAN.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_DEU.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_DUT.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_ESP.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_FRA.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_HUN.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_ITA.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_KOR.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_POL.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_ROM.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_RUS.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_SVN.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_SWE.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LANGUAGE\WCMD_UKR.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LIBDEFLATE.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\LIBDEFLATE64.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\NOCLOSE.EXE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\NOCLOSE64.EXE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\SHARE_NT.EXE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TC7Z.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TC7Z64.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TC7ZIPIF.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCLZMA64.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCMADM64.EXE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCMADMIN.EXE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCMDLZMA.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCMDX32.EXE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCMDX64.EXE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCshareWin10.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCshareWin10x64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCUNIN64.EXE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCUNINST.EXE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCUNZL64.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCUNZLIB.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TcUsbRun.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCZSTD32.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TCZSTD64.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TOTALCMD.EXE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TOTALCMD.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\TOTALCMD64.EXE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\UNACEV2.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\UNRAR.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\UNRAR64.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\UNRAR9X.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\WC32TO16.EXE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\WCMICON2.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\WCMICONS.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\WCMICONS.INC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\WCMZIP32.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\App\totalcmd\WCMZIP64.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\Data\settings\tcDirFrq.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\Data\settings\tckey\Readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\Data\Tabs\Readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\help.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\Other\Help\Images\Donation_Button.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\Other\Help\Images\Favicon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\Other\Help\Images\Help_Background_Footer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\Other\Help\Images\Help_Background_Header.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\Other\Help\Images\Help_Logo_Top.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\Other\Source\License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\Other\Source\Readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\othersoftware\totalcommander\TotalCommanderPortable.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\ReadMe.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\SU\SU.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tools\SU\othersoftware\couitatools\tools\" />
+    <Folder Include="Tools\SU\othersoftware\totalcommander\Data\Thumbnails\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

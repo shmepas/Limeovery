@@ -1,0 +1,144 @@
+;    Meniu actualizat pentru Versiunea TC 11.00
+POPUP "&Fișiere"
+  MENUITEM "Schimbare &atribute...", cm_SetAttrib
+  MENUITEM "&Comprimare...\tAlt+F5", cm_PackFiles
+  MENUITEM "&Decomprimare...\tAlt+F9", cm_UnpackFiles
+  MENUITEM "Verificare arhivă\tAlt+Shift+F9",518
+  MENUITEM "C&omparare prin conținut...", 2022
+  MENUITEM "Asocieri &Sistem...", cm_associate
+  MENUITEM "Asocieri &Interne (doar în Total Commander)...", 519
+  MENUITEM "&Proprietăți...\tAlt+Enter ", cm_versioninfo
+  MENUITEM "Calculea&ză spațiul ocupat...\tCtrl+L", cm_GetFileSpace
+  MENUITEM "Utilitar Redenumire &Multiplă...\tCtrl+M", 2400
+  MENUITEM "Creare/Editare come&ntariu...\tCtrl+Z", 2700
+  POPUP "&Tipărirea..."
+    MENUITEM "&listei de fișiere...", 2027
+    MENUITEM "listei de fișiere inclusiv a &sub-folderelor", 2028
+    MENUITEM "&conținutului fișierului\tCtrl+F9", cm_PrintFile
+  END_POPUP
+  MENUITEM SEPARATOR
+  MENUITEM "&Fracționare fișier...", 560
+  MENUITEM "Re-com&binare fișier din părțile sale...", 561
+  MENUITEM "Codare fiși&er (MIME,UUE,XXE)...", 562
+  MENUITEM "Decodare fișier (MIME,UUE,XXE,BinHex,Yenc)...", 563
+  MENUITEM "Creare fișier(e) amprentă (format SFV/MD5/SHA1)...", 564
+  MENUITEM "&Verificare integritate fișier(e) pe baza fișierului amprentă", 565
+  MENUITEM SEPARATOR
+  MENUITEM "Ieși&re\tAlt+F4", 24340
+END_POPUP
+
+POPUP "S&elecții"
+    MENUITEM "Selectare &grup [+ foldere]...\t[Shift]+Num +", cm_spreadselection
+    MENUITEM "De-selectare gr&up [- foldere]...\t[Shift]+Num -", cm_shrinkselection
+    MENUITEM "Selectare &toate fișierele [+ foldere]\tCtrl+[Shift]+Num +", cm_selectall
+    MENUITEM "De-selectarea tuturor fișierelor [- foldere]\tCtrl+[Shift]+Num -", cm_Clearall
+    MENUITEM "&Inversare selecție fișiere [+ foldere]\t[Shift]+Num *", cm_ExchangeSelection
+    MENUITEM "Selectare fișiere cu aceeași e&xtensie\tAlt+Num +", 527
+    MENUITEM SEPARATOR
+    MENUITEM "&Salvare selecție în memorie", 530
+    MENUITEM "&Restaurare selecție din memorie\tNum /", 529
+    MENUITEM "Sal&vare selecție în fișier", 2031
+    MENUITEM "R&estaurare selecție din fișier", 2032
+    MENUITEM SEPARATOR
+    MENUITEM "Copiază lista cu Numele și Extensia fișierelor selectate în Clipboard", 2017
+    MENUITEM "Copiază Calea, Numele și Extensia fișierelor selectate în Clipboard", 2018
+    MENUITEM "C&opiază Numele, Extensia fișierelor selectate + Detalii în Clipboard", 2036
+    MENUITEM "Copiază Calea, Numele, Extensia fișierelor selectate + Detalii în Clipboard", 2037
+    MENUITEM SEPARATOR
+    MENUITEM "&Comparare foldere\tShift+F2", cm_CompareDirs
+    MENUITEM "Selectare fișierele diferite și ascu&ndere a celor identice", cm_DirMatch
+END_POPUP
+
+POPUP "&Comenzi"
+    MENUITEM "Structura &arborescentă...\tAlt+F10", cm_CDtree
+    MENUITEM "Căutare...\tAlt+F7", cm_searchfor
+    MENUITEM "Căutare ca &proces separat...\tAlt+Shift+F7", 545
+    MENUITEM "Modificare etichetă de volum...", cm_VolumeId
+    MENUITEM "&Informații despre sistem...", cm_sysinfo
+    MENUITEM "Sincroni&zare structuri de foldere...", 2020
+    MENUITEM "&Favorite (Foldere/Comenzi) \tCtrl+D", 526
+    MENUITEM "Folde&rul precedent\tAlt+Săgeată stânga", 570
+    MENUITEM SEPARATOR
+    MENUITEM "Fereastra cu Linia de comandă &DOS", cm_ExecuteDOS
+    MENUITEM SEPARATOR
+    MENUITEM "Afișare fișiere din toate S&ub-folderele \tCtrl+B", 2026
+    MENUITEM "Afișare &Suprafața de lucru (Desktop)", 2121
+    MENUITEM "Utilitar &Transfer în Fundal...",559
+    MENUITEM SEPARATOR
+    MENUITEM "Sursă&<->Destinație\tCtrl+U", cm_exchange
+    MENUITEM "Destinație&=Sursă", cm_matchsrc
+END_POPUP
+
+POPUP "&Rețea"
+    MENUITEM "&Mapare disc rețea...", cm_NetConnect
+    MENUITEM "An&ulare mapare disc rețea...", cm_NetDisconnect
+    MENUITEM "Partajare folder &curent în rețea (Share)...", cm_NetShareDir
+    MENUITEM "Anulare permisiuni folder curent (Unshare)...", cm_NetUnshareDir
+    MENUITEM "Afișare foldere cu permisiuni &Admin", 2204
+    MENUITEM SEPARATOR
+    MENUITEM "&FTP - Conectare...\tCtrl+F", 550
+    MENUITEM "FTP - Cone&xiune nouă...\tCtrl+N", 551
+    MENUITEM "FTP - D&econectare\tCtrl+Shift+F", 552
+    MENUITEM "FTP - Afișare fișiere ascunse", 553
+    MENUITEM "FTP - Descarcă fișiere conform &listei din fișier...", 558
+    MENUITEM "Conectare cu alt PC prin p&ortul paralel...", 2300
+END_POPUP
+
+POPUP "&Afișare"
+    MENUITEM "Doar nume&le\tCtrl+F1", cm_srcshort
+    MENUITEM "&Complet\tCtrl+F2", cm_srclong
+    MENUITEM "Nume și Co&mentariu\tCtrl+Shift+F2", 300
+    MENUITEM "Mod coloane personalizate...\tShift+F1", 270
+    MENUITEM "Stil Vizualizare...", 333
+    MENUITEM "&Arborescent\tCtrl+F8", cm_srcTree
+    POPUP "Afișare Ferestre Arbore... \tCtrl+Shift+F8"
+        MENUITEM "&0 (Niciuna)", 3200
+        MENUITEM "&1 (Una, comună celor două panouri)", 3201
+        MENUITEM "&2 (Două, una pentru fiecare panou)", 3202
+    END_POPUP
+    MENUITEM "Imagini «Miniatură»\tCtrl+Shift+F1", 269
+    MENUITEM "Vizualizare ra&pidă\tCtrl+Q", 304
+    MENUITEM "Aranjare ferestre &Vertical / Orizontal", 305
+    MENUITEM "&Filă nouă cu folderul curent\tCtrl+T", 3001
+    MENUITEM SEPARATOR
+    MENUITEM "Afișare comple&tă (fără filtrare) \tCtrl+F10", cm_srcallfiles
+    MENUITEM "Afișare doar a programelelor &executabile\tCtrl+F11", cm_srcexecs
+    MENUITEM "*.*", cm_SrcUserSpec
+    MENUITEM "Setare filtru de afișare utili&zator...\tCtrl+F12", cm_srcuserdef
+    MENUITEM "Afișarea d&oar a fișierelor selectate", 2023
+    MENUITEM SEPARATOR
+    MENUITEM "Sortare după &nume\tCtrl+F3", cm_srcbyname
+    MENUITEM "Sortare după e&xtensie\tCtrl+F4", cm_srcbyext
+    MENUITEM "Sortare după &dată\tCtrl+F5", cm_srcbydatetime
+    MENUITEM "Sortare după dimensi&une\tCtrl+F6", cm_srcbysize
+    MENUITEM "Ne&sortat\tCtrl+F7", cm_srcunsorted
+    MENUITEM SEPARATOR
+    MENUITEM "Ordine &inversă", cm_srcnegorder
+    MENUITEM SEPARATOR
+    MENUITEM "&Recitește Discul Sursă\tCtrl+R", cm_rereadsource
+END_POPUP
+
+
+POPUP "Co&nfigurare"
+    MENUITEM "Opți&uni...", cm_config
+    MENUITEM "&Bara de butoane...", cm_ButtonConfig
+    MENUITEM "Bara de butoane #&2 (Verticală)...", 583
+    MENUITEM "Modificare &directă a fișierelor de configurare", 581
+    MENUITEM "Întunecat<->&Normal", 2950
+    MENUITEM "&Salvare poziție", cm_configSavepos
+    MENUITEM "Salvare configurație", 580
+END_POPUP
+
+STARTMENU
+
+HELP_BREAK
+
+POPUP "A&jutor"
+    MENUITEM "&Cuprins\tF1", cm_HelpIndex
+    MENUITEM "C&ombinații de taste", cm_keyboard
+    MENUITEM "Informații despre licenție&re", cm_register
+    MENUITEM "&Vizită la website-ul Total Commander", 640
+    MENUITEM "Verifică d&acă există o nouă versiune", 650
+    MENUITEM SEPARATOR
+    MENUITEM "&Despre Total Commander...", cm_About
+END_POPUP

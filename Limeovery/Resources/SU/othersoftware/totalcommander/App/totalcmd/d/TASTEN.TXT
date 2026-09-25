@@ -1,0 +1,205 @@
+Tastaturbelegung von Total Commander
+====================================
+
+Taste                  Wirkung
+~~~~~                  ~~~~~~~
+
+F1                     Hilfe aufrufen
+F2                     Quellverzeichnis neu einlesen
+F3                     Datei(en) anzeigen
+F4                     Datei editieren
+F5                     Datei(en) kopieren
+F6                     Datei(en) umbenennen/verschieben
+F7                     Verzeichnis erstellen
+F8 oder ENTF           Datei(en) löschen in Papierkorb/direkt - je nach Konfiguration
+F9                     Menü oberhalb des Quellverzeichnisses aktivieren (links bzw. rechts)
+F10                    Linkes Menü aktivieren bzw. Menü deaktivieren
+ALT+F1                 Linkes Laufwerk wählen
+ALT+F2                 rechtes Laufwerk wählen
+ALT+F3                 Umschalten zwischen externem/internem Dateibetrachter
+ALT+UMSCH+F3           Starte Lister mit interner Anzeige ohne Plugins oder Multimedia
+ALT+F4                 Beenden|Minimieren (mit Option MinimizeOnClose, siehe Hilfe)
+ALT+F5                 Packen
+ALT+UMSCH+F5           Packen und anschließend löschen
+ALT+F6                 Mehrere Dateien aus Archiv unter Cursor entpacken
+ALT+F7                 Suchen
+ALT+UMSCH+F7           Suchen in separatem Prozess
+ALT+F8                 Klappt History-Liste der Kommandozeile auf
+ALT+F9                 Wie ALT+F6 (weil ALT+F6 unter Windows 95 nicht geht!)
+ALT+UMSCH+F9           Archive auf Integrität testen
+ALT+F10                Öffnet ein Fenster mit dem Verzeichnisbaum
+ALT+F11                Linke Verzeichnisleiste wählen (Brotkrumenleiste)
+ALT+F12                Rechte Verzeichnisleiste wählen (Brotkrumenleiste)
+ALT+UMSCH+F11          Horizontalen Buttonbar fokussieren (zum Benutzen mit der Tastatur)
+ALT+UMSCH+F12          Vertikalen Buttonbar fokussieren (zum Benutzen mit der Tastatur)
+ALT+links/             Gehe zum vorherigen besuchten Verzeichnis (aus der Liste der zuletzt
+                       besuchten)
+ALT+rechts             Gehe zum nächsten besuchten Verzeichnis (aus der Liste der zuletzt
+                       besuchten)
+ALT+ab                 Zeige Liste der bisher besuchten Verzeichnisse an
+ALT+UMSCH+ab           Zeige Liste der bisher besuchten Verzeichnisse ohne Ausdünnen an
+UMSCH+F1               Menü "Benutzerdefinierte Spaltenansicht"
+UMSCH+F2               Verzeichnisse vergleichen
+UMSCH+F3               Nur Datei unter Cursor anzeigen, wenn mehrere markiert sind
+UMSCH+F4               Neue Textdatei anlegen und in Editor laden
+UMSCH+F5               Datei(en) im gleichen Verzeichnis kopieren (mit umbenennen)
+UMSCH+STRG+F5          Verknüpfung(en) im Zielverzeichnis erzeugen
+UMSCH+F6               Datei(en) im gleichen Verzeichnis umbenennen
+UMSCH+F7               Verzeichnis im Zielfenster erstellen, mit Namen unter Cursor
+UMSCH+F8/ENTF          Datei(en) löschen, direkt/in Papierkorb - je nach Konfiguration
+UMSCH+F10              Lokales Menü anzeigen
+UMSCH+ESC              Total Commander wird zum Symbol verkleinert
+NUM +                  Markierung erweitern (konfigurierbar ob nur Dateien oder auch Verzeichnisse)
+NUM -                  Markierung verkleinern (immer von Dateien und Verzeichnissen)
+NUM *                  Markierung umkehren (auch mit UMSCH)
+NUM /                  Markierung wiederherstellen
+UMSCH+NUM +            Wie NUM +, aber Dateien+Verzeichnisse, falls NUM + nur die Markierung von
+                       Dateien umkehrt
+UMSCH+NUM -            Entfernt Markierung nur von Dateien (immer!)
+UMSCH+NUM *            Wie NUM *, aber Dateien+Verzeichnisse, falls NUM * nur die Markierung von
+                       Dateien umkehrt
+STRG+NUM +             Alles markieren (konfigurierbar ob nur Dateien oder auch Verzeichnisse)
+STRG+UMSCH+NUM +       Wie STRG+NUM +, aber Dateien+Verzeichnisse, wenn STRG+NUM + nur alle Dateien
+                       markiert
+STRG+NUM -             Nichts markieren (immer Markierung von Dateien und Verzeichnissen entfernen)
+STRG+UMSCH+NUM -       Markierung nur von Dateien entfernen (nicht von Verzeichnissen)
+ALT+NUM +              Dateien mit selber Erweiterung markieren
+ALT+NUM -              Markierung von Dateien mit selber Erweiterung entfernen
+BACKSPACE/STRG+BildAuf Ins nächsthöhere Verzeichnis wechseln (entspricht cd ..)
+STRG+BildAb            Verzeichnis/Archiv öffnen (auch .EXE)
+STRG+<                 Ins Hauptverzeichnis (Wurzelverzeichnis) wechseln
+STRG+links/rechts      Öffnet Verzeichnis/Archiv unter dem Cursor und zeigt es im
+                       Zielfenster an. Falls sich der Cursor nicht auf einem
+                       Verzeichnis/Archiv befindet, oder im Zielfenster, wird 
+                       stattdessen das aktuelle Verzeichnis angezeigt.
+STRG+F1                Dateiansicht kurz
+STRG+UMSCH+F1          Miniaturansicht (Vorschaubilder)
+STRG+F2                Dateiansicht lang
+STRG+UMSCH+F2          Kommentaransicht (Kommentare mit STRG+Z anlegen)
+STRG+F3                Sortieren nach Name
+STRG+F4                Sortieren nach Erweiterung
+STRG+F5                Sortieren nach Datum/Zeit
+STRG+F6                Sortieren nach Größe
+STRG+F7                Unsortiert
+STRG+F8                Verzeichnisbaum
+STRG+UMSCH+F8          Separater Verzeichnisbaum (durchschalten: einer, zwei, keiner)
+STRG+F9                Drucke Datei via verknüpfte Anwendung
+STRG+F10               Alle Dateien anzeigen
+STRG+F11               Nur Programme anzeigen
+STRG+F12               Benutzerdefiniert Dateien anzeigen
+TAB                    Zwischen linkem und rechtem Verzeichnisfenster wechseln
+UMSCH+TAB              Zwischen Verzeichnisfenster und separatem Verzeichnisbaum wechseln
+                       (sofern aktiviert)
+Buchstabe              Eingabe in die Kommandozeile, Cursor wechselt in Kommandozeile
+EINFÜGEN               Datei oder Verzeichnis markieren
+LEERTASTE              Datei oder Verzeichnis markieren (wie EINF). Falls die LEERTASTE bei
+                       einem nicht markierten Verzeichnis unter dem Cursor gedrückt wird,
+                       so wird der Inhalt des Verzeichnisses aufsummiert und seine Größe
+                       anstelle von <DIR> angezeigt (Modus Ansicht - Lang).  Dies kann via
+                       'Konfigurieren' - 'Einstellungen' - 'Operation' - 'Markieren mit der
+                       Leertaste' abgeschaltet werden.
+ENTER                  Verzeichnis wechseln/Programm starten/ Assoziiertes Programm aufrufen
+                       bzw. Kommandozeile ausführen, falls etwas drin steht. Sofern das 
+                       Quellverzeichnis den Inhalt einer Archivdatei (gepackten Datei) anzeigt,
+                        werden weitere Informationen zur Datei unter dem Cursor angezeigt.
+UMSCH+ENTER            1. Kommandozeile bzw. Programm unter Cursor über Windows-Shell aufrufen
+                       und am Schluss Fenster nicht automatisch schließen (nützlich
+                       bei Umleitungen > oder <). Geht nur wenn NOCLOSE.EXE im Total
+                        Commander-Verzeichnis steht!
+                       2. Bei ZIP-Dateien: Alternative Wahl aufrufen (wie Verz. behandeln
+                       <-> externe Packershell wie Winzip)
+                       3. Innerhalb einer Archivdatei: Entpacke Datei unter Cursor in
+                       temporäres Verzeichnis und öffne sie als Archivdatei (Bearbeiten
+                       von zip in zip).
+                       4. In der Liste der zuletzt benutzten Verzeichnisse (Verlauf, STRG+D)
+                       öffne das angewählte Verzeichnis in einem neuen Tab.
+ALT+UMSCH+ENTER        Inhalte aller Verzeichnisse aufsummieren. Die Größen werden in der
+                       Ansicht "lang" anstelle von <DIR> angezeigt. Abbrechen durch Gedrückt-
+                       halten der ESC-Taste.
+ALT+ENTER              Eigenschaften-Dialog anzeigen. Beim Angewenden auf [..] werden die
+                       Eigenschaften des aktuellen Verzeichnisses angezeigt.
+STRG+A                 Alles markieren
+STRG+UMSCH+A           Liste aller geöffneten Tabs als Menü anzeigen (wie im Chrome-Browser)
+STRG+B                 Zeige Inhalt des aktuellen Verzeichnisses inkl. aller Unterverzeichnisse
+                       in einer Dateiliste (Zweigansicht)
+STRG+UMSCH+B           Zeige alle markierten Dateien, und alle in allen markierten Unterverzeich-
+                       nissen (markierte Zweigansicht)
+STRG+C                 In Zwischenablage kopieren
+STRG+D                 Verzeichnismenü öffnen
+STRG+F                 FTP-Verbindung aufnehmen
+STRG+UMSCH+F           FTP-Verbindung, Portverbindung und gewisse Dateisystem-Plugin-Verbindungen
+                       trennen
+STRG+I                 Ins Zielfenster wechseln
+STRG+L                 Speicherbedarf (der markierten Dateien) ermitteln
+STRG+M                 Mehrfach-Umbenenn-Tool
+STRG+UMSCH+M           FTP-Transfermodus ändern
+STRG+N                 Neue FTP-Verbindung (Eingabe der URL oder Host-Adresse)
+STRG+P                 Aktuellen Pfad in Kommandozeile kopieren
+STRG+Q                 Schnellansichtsfenster anstelle eines Dateifensters anzeigen
+STRG+UMSCH+Q           Separates Schnellansichtsfenster (wie Lister, aber wird beim Bewegen in den
+                       Dateilisten jeweils angepasst)
+STRG+R                 Quellverzeichnis neu einlesen
+STRG+S                 Schnellfilterdialog öffnen und Filter aktivieren
+                       (Deaktivieren mit ESC oder STRG+F10)
+STRG+UMSCH+S           Schnellfilterdialog öffnen und zuletzt aktiven Filter aktivieren
+STRG+T                 Neuen Ordner-Tab erzeugen und aktivieren
+STRG+UMSCH+T           Neuen Ordner-Tab erzeugen, aber nicht aktivieren
+STRG+U                 Verzeichnisse vertauschen
+STRG+UMSCH+U           Verzeichnisse und Ordner-Tabs vertauschen
+STRG+V                 Dateien aus Zwischenablage einfügen
+STRG+W                 Aktuellen Tab schließen
+STRG+UMSCH+W           Alle offenen Tabs schließen
+STRG+X                 In Zwischenablage verschieben
+STRG+Z                 Kommentar einer Datei bearbeiten
+STRG+Oben              Datei unter Cursor in neuem Tab öffnen
+STRG+UMSCH+Oben        Datei unter Cursor in neuem Tab im Zielfenster öffnen
+STRG+TAB               Zum nächsten Ordner-Tab springen
+STRG+UMSCH+TAB         Zum vorherigen Ordner-Tab springen
+ALTGR+Buchstabe(n)/    Positioniere Cursor auf Datei oder Verzeichnis, die mit diesen
+STRG+ALT+Buchstabe(n)  Buchstaben beginnen. Kann in ALT+Buchstabe(n) abgeändert werden.
+                       (Unterstützt Tastenkombinationen STRG+C, STRG+X, STRG+V und
+                       STRG+A; STRG+S für Suchfilter ein/aus)
+
+Kommandozeile: Tasten
+=====================
+
+Wenn das Hauptprogramm des Total-Commanders aktiv ist, werden (fast) alle Tastatureingaben in die
+Kommandozeile umgelenkt.
+Hier die Bedeutung einiger Tasten:
+
+ENTER                  Die Kommandozeile wird ausgeführt, falls sie mindestens ein
+                       Zeichen enthält (sonst wird das im Quellverzeichnis momentan
+                       markierte Programm gestartet). Ist der Befehl entweder cd, md
+                       oder rd, wird er intern direkt ausgeführt. Ist er ein anderer
+                       Kommandozeilenbefehl, wird cmd.exe gestartet. Sonst wird
+                       versucht, ein Programm des angegebenen Namens zu starten.
+UMSCH+ENTER            Wie ENTER, nur via Windows-Shell. Das Fenster wird
+                       nach Programmende nicht automatisch geschlossen. Geht nur wenn
+                       NOCLOSE.EXE im Total Commander-Verzeichnis steht!
+STRG+ENTER             Die aktuell markierte Datei im Quellverzeichnis wird hinten 
+                       an die Kommandozeile angehängt.
+STRG+UMSCH+ENTER       Die aktuell markierte Datei inklusive Suchpfad wird an die 
+                       Kommandozeile angehängt.
+STRG+CURSORDOWN oder   Eine Liste mit den zuletzt eingegebenen Befehlen wird aufgeklappt.
+ALT+F8                 Verwenden Sie die Pfeiltasten auf und ab (mit oder ohne STRG-
+                       Taste), um einen Befehl auszuwählen, der dann durch Betätigen der
+                       Pfeiltasten links und rechts bearbeitet werden kann.
+                       Dabei schließt automatisch die Liste.
+TAB                    Wechselt den Cursor zurück ins Quellverzeichnis.
+Cursortasten           Cursor links und Cursor rechts bewegen den Cursor innerhalb der
+                       Kommandozeile, auch wenn er vorher im Quellverzeichnis stand.
+                       Wenn Ansicht "Kurz" eingestellt ist (nur Dateinamen), dann bewegen
+                       alle Pfeiltasten durch das Verzeichnisfenster. Für die Kommandozeile
+                       muss dann UMSCH gedrückt werden.
+                       Cursor auf und Cursor ab bewegen den Cursorbalken im Quellverzeichnis,
+                       auch wenn er vorher in der Eingabezeile stand.
+ESC                    Löscht Kommandozeile, Cursor zurück ins Dateifenster
+STRG+A                 Ganze Kommandozeile markieren
+STRG+Y                 Löscht Kommandozeile, Cursor bleibt in Kommandozeile
+STRG+C                 Markierten Text in Zwischenablage kopieren
+STRG+X                 Markierten Text in Zwischenablage verschieben
+STRG+V                 Text aus Zwischenablage einfügen
+STRG+E                 Vorherigen Befehl in Kommandozeile kopieren
+STRG+K                 Bis Zeilenende löschen
+STRG+W                 Wort links vom Cursor löschen
+STRG+T                 Wort rechts vom Cursor löschen

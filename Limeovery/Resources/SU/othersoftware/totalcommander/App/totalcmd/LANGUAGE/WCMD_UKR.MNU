@@ -1,0 +1,142 @@
+POPUP "&Файли"
+  MENUITEM "&Змінити атрибути...", 502
+  MENUITEM "&Архівувати файли...\tAlt+F5", 508
+  MENUITEM "&Видобути файли...\tAlt+F9", 509
+  MENUITEM "&Перевірити архів(и)\tAlt+Shift+F9", 518
+  MENUITEM "П&орівняння файлів...", 2022
+  MENUITEM "&Системні асоціації...", 507
+  MENUITEM "Внутрі&шні асоціації (лише в TC)...", 519
+  MENUITEM "В&ластивості...\tAlt+Enter", 510
+  MENUITEM "Підрахувати використане &місце\tCtrl+L", 503
+  MENUITEM "&Групове перейменування...\tCtrl+M", 2400
+  MENUITEM "Коме&нтар...\tCtrl+Z", 2700
+  POPUP "Др&ук"
+    MENUITEM "Перелік &файлів...", 2027
+    MENUITEM "&Перелік файлів з піддиректоріями...", 2028
+    MENUITEM "&Контент із файлу\tCtrl+F9", 504
+  END_POPUP
+  MENUITEM SEPARATOR
+  MENUITEM "&Розділити файл...", 560
+  MENUITEM "Зібрати &файли...", 561
+  MENUITEM "&Кодувати (MIME, UUE, XXE)...", 562
+  MENUITEM "&Декодувати (MIME, UUE, XXE, BinHex)...", 563
+  MENUITEM "С&творити CRC32, MD5, SHA1...", 564
+  MENUITEM "П&еревірити CRC32, MD5, SHA1", 565
+  MENUITEM SEPARATOR
+  MENUITEM "Ви&хід\tAlt+F4", 24340
+END_POPUP
+
+POPUP "&Виділення"
+  MENUITEM "Виділити &групу...\tNum +", 521
+  MENUITEM "&Прибрати виділення групи...\tNum –", 522
+  MENUITEM "В&иділити все\tCtrl+Num +", 523
+  MENUITEM "П&рибрати все виділення\tCtrl+Num –", 524
+  MENUITEM "&Інверсія виділення\tNum *", 525
+  MENUITEM "Виділити &файли/директорії за розширенням\tAlt+Num +", 527
+  MENUITEM SEPARATOR
+  MENUITEM "&Зберегти виділення", 530
+  MENUITEM "Ві&дновити виділення\tNum /", 529
+  MENUITEM "З&берегти виділення у файл...", 2031
+  MENUITEM "З&авантажити виділення з файлу...", 2032
+  MENUITEM SEPARATOR
+  MENUITEM "&Копіювати у буфер імена вибраних файлів", 2017
+  MENUITEM "Копіювати у буфер імена файлів зі &шляхами", 2018
+  MENUITEM "Копіювати у буфер з &властивостями", 2036
+  MENUITEM "Копіювати у буфер зі шляхами &та властивостями", 2037
+  MENUITEM SEPARATOR
+  MENUITEM "Порівн&яти директорії\tShift+F2", 533
+  MENUITEM "Виді&лити новіші, приховати однакові файли", 534
+END_POPUP
+
+POPUP "&Команди"
+  MENUITEM "&Дерево файлової системи...\tAlt+F10", 500
+  MENUITEM "&Пошук файлів...\tAlt+F7", 501
+  MENUITEM "Пошук файлів у &окремому процесі...\tAlt+Shift+F7", 545
+  MENUITEM "&Ім'я тому...", 505
+  MENUITEM "Ін&формація про систему", 506
+  MENUITEM "&Синхронізувати директорії...", 2020
+  MENUITEM "О&брані директорії\tCtrl+D", 526
+  MENUITEM "&Назад\tAlt+ <–", 570
+  MENUITEM SEPARATOR
+  MENUITEM "Відкрити &командну консоль", 511
+  MENUITEM SEPARATOR
+  MENUITEM "П&лоский огляд (з субдиректоріями)\tCtrl+B", 2026
+  MENUITEM "Відкрити «&Робочий стіл»", 2121
+  MENUITEM "Д&испетчер фонової передачі...", 559
+  MENUITEM SEPARATOR
+  MENUITEM "Поміняти &місцями файлові панелі\tCtrl+U", 531
+  MENUITEM "Панелі: &Активна = Неактивна", 532
+END_POPUP
+
+POPUP "&Мережа"
+  MENUITEM "&Підключити мережний диск...", 512
+  MENUITEM "&Відключити мережний диск...", 513
+  MENUITEM "Надати &доступ до директорії...", 514
+  MENUITEM "&Скасувати доступ до директорії...", 515
+  MENUITEM "Переглянути &ресурси адміністратора", 2204
+  MENUITEM SEPARATOR
+  MENUITEM "&З'єднання по FTP...\tCtrl+F", 550
+  MENUITEM "&Нове FTP з'єднання...\tCtrl+N", 551
+  MENUITEM "Від&ключитися від FTP\tCtrl+Shift+F", 552
+  MENUITEM "П&оказати приховані FTP файли", 553
+  MENUITEM "FTP з&авантаження за переліком...", 558
+  MENUITEM "LPT/USB з'&єднання з іншим ПК...", 2300
+END_POPUP
+
+POPUP "В&игляд"
+  MENUITEM "&Скорочений\tCtrl+F1", 301
+  MENUITEM "&Повний\tCtrl+F2", 302
+  MENUITEM "&Коментарі\tCtrl+Shift+F2", 300
+  MENUITEM "К&олонки користувача\tShift+F1", 270
+  MENUITEM "&Режими перегляду користувача", 333
+  MENUITEM "&Дерево\tCtrl+F8", 303
+  POPUP "Окре&ме дерево\tCtrl+Shift+F8"
+    MENUITEM "&0 (Немає)", 3200
+    MENUITEM "&1 (Одне для обох панелей)", 3201
+    MENUITEM "&2 (Два, по одному на панель)", 3202
+  END_POPUP
+  MENUITEM "П&ерегляд ескізів\tCtrl+Shift+F1", 269
+  MENUITEM "П&анель швидкого перегляду\tCtrl+Q", 304
+  MENUITEM "&Вертикальне розташування", 305
+  MENUITEM "&Нова вкладка\tCtrl+T", 3001
+  MENUITEM SEPARATOR
+  MENUITEM "Всі &файли\tCtrl+F10", 312
+  MENUITEM "Про&грами\tCtrl+F11", 311
+  MENUITEM "*.*", 313
+  MENUITEM "Фі&льтр...\tCtrl+F12", 314
+  MENUITEM "С&ховати невиділене", 2023
+  MENUITEM SEPARATOR
+  MENUITEM "За &ім'ям\tCtrl+F3", 321
+  MENUITEM "За роз&ширенням\tCtrl+F4", 322
+  MENUITEM "За &часом\tCtrl+F5", 324
+  MENUITEM "За ро&зміром\tCtrl+F6", 323
+  MENUITEM "&Без сортування\tCtrl+F7", 325
+  MENUITEM SEPARATOR
+  MENUITEM "&У зворотньому порядку", 330
+  MENUITEM SEPARATOR
+  MENUITEM "Перечитати д&иректорію\tCtrl+R", 540
+END_POPUP
+
+POPUP "Конфі&гурація"
+  MENUITEM "&Налаштування...", 490
+  MENUITEM "&Панель клавіш...", 498
+  MENUITEM "&Вертикальна панель клавіш...", 583
+  MENUITEM "&Редагування ini файлів вручну", 581
+  MENUITEM "&Темний <-> Нормальний", 2950
+  MENUITEM "Зберегти п&озицію", 493
+  MENUITEM "Зберегти на&лаштування", 580
+END_POPUP
+
+STARTMENU
+
+HELP_BREAK
+
+POPUP "&Довідка"
+  MENUITEM "&Зміст\tF1", 610
+  MENUITEM "&Клавіатура", 620
+  MENUITEM "&Реєстраційна інформація", 630
+  MENUITEM "&Відвідати сайт Totalcmd", 640
+  MENUITEM "&Перевірка оновлень зараз...", 650
+  MENUITEM SEPARATOR
+  MENUITEM "Пр&о Total Commander...", 690
+END_POPUP

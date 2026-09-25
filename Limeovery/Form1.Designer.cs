@@ -39,11 +39,15 @@
             this.button8 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.Tools = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.processHackerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.explorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simpleUnlockerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button9 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -63,7 +67,7 @@
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
             this.button2.Location = new System.Drawing.Point(6, 28);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(351, 34);
+            this.button2.Size = new System.Drawing.Size(209, 34);
             this.button2.TabIndex = 1;
             this.button2.Text = "Редактор реестра";
             this.button2.UseVisualStyleBackColor = false;
@@ -82,7 +86,7 @@
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
             this.button1.Location = new System.Drawing.Point(6, 189);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(351, 34);
+            this.button1.Size = new System.Drawing.Size(209, 34);
             this.button1.TabIndex = 2;
             this.button1.Text = "Диспетчер задач";
             this.button1.UseVisualStyleBackColor = false;
@@ -101,7 +105,7 @@
             this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
             this.button4.Location = new System.Drawing.Point(6, 229);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(351, 35);
+            this.button4.Size = new System.Drawing.Size(209, 35);
             this.button4.TabIndex = 4;
             this.button4.Text = "Автозапуск програм";
             this.button4.UseVisualStyleBackColor = false;
@@ -138,7 +142,7 @@
             this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
             this.button6.Location = new System.Drawing.Point(6, 107);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(351, 31);
+            this.button6.Size = new System.Drawing.Size(209, 31);
             this.button6.TabIndex = 6;
             this.button6.Text = "Восстановление MBR";
             this.button6.UseVisualStyleBackColor = false;
@@ -157,7 +161,7 @@
             this.button7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
             this.button7.Location = new System.Drawing.Point(6, 144);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(351, 39);
+            this.button7.Size = new System.Drawing.Size(209, 39);
             this.button7.TabIndex = 7;
             this.button7.Text = "Командная строка";
             this.button7.UseVisualStyleBackColor = false;
@@ -176,7 +180,7 @@
             this.button8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
             this.button8.Location = new System.Drawing.Point(6, 270);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(351, 35);
+            this.button8.Size = new System.Drawing.Size(209, 35);
             this.button8.TabIndex = 8;
             this.button8.Text = "Восстановление шрифтов";
             this.button8.UseVisualStyleBackColor = false;
@@ -196,6 +200,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button12);
+            this.groupBox1.Controls.Add(this.button11);
+            this.groupBox1.Controls.Add(this.button10);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button8);
@@ -215,12 +222,49 @@
             this.groupBox1.Text = "Возможности";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(77)))), ((int)(((byte)(39)))));
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button12.Location = new System.Drawing.Point(233, 134);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(332, 36);
+            this.button12.TabIndex = 13;
+            this.button12.Text = "Информация о системе";
+            this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(77)))), ((int)(((byte)(39)))));
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button11.Location = new System.Drawing.Point(233, 74);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(332, 38);
+            this.button11.TabIndex = 12;
+            this.button11.Text = "Очистка вр. файлов";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(77)))), ((int)(((byte)(39)))));
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button10.Location = new System.Drawing.Point(231, 28);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(334, 32);
+            this.button10.TabIndex = 11;
+            this.button10.Text = "точка Восстановления";
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Limeovery.Properties.Resources.photo_2026_01_13_02_36_21;
-            this.pictureBox1.Location = new System.Drawing.Point(379, 28);
+            this.pictureBox1.Location = new System.Drawing.Point(571, 10);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(369, 277);
+            this.pictureBox1.Size = new System.Drawing.Size(205, 142);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
@@ -228,10 +272,10 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(77)))), ((int)(((byte)(39)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Location = new System.Drawing.Point(6, 68);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(351, 33);
+            this.button3.Size = new System.Drawing.Size(209, 33);
             this.button3.TabIndex = 9;
             this.button3.Text = "Сторонние утилиты";
             this.button3.UseVisualStyleBackColor = false;
@@ -242,24 +286,32 @@
             this.Tools.BackColor = System.Drawing.Color.White;
             this.Tools.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.processHackerToolStripMenuItem,
-            this.explorerToolStripMenuItem});
+            this.explorerToolStripMenuItem,
+            this.simpleUnlockerToolStripMenuItem});
             this.Tools.Name = "contextMenuStrip1";
-            this.Tools.Size = new System.Drawing.Size(155, 48);
+            this.Tools.Size = new System.Drawing.Size(158, 70);
             this.Tools.Opening += new System.ComponentModel.CancelEventHandler(this.Tools_Opening);
             // 
             // processHackerToolStripMenuItem
             // 
             this.processHackerToolStripMenuItem.Name = "processHackerToolStripMenuItem";
-            this.processHackerToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.processHackerToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.processHackerToolStripMenuItem.Text = "Process Hacker";
             this.processHackerToolStripMenuItem.Click += new System.EventHandler(this.processHackerToolStripMenuItem_Click);
             // 
             // explorerToolStripMenuItem
             // 
             this.explorerToolStripMenuItem.Name = "explorerToolStripMenuItem";
-            this.explorerToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.explorerToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.explorerToolStripMenuItem.Text = "Explorer++";
             this.explorerToolStripMenuItem.Click += new System.EventHandler(this.explorerToolStripMenuItem_Click);
+            // 
+            // simpleUnlockerToolStripMenuItem
+            // 
+            this.simpleUnlockerToolStripMenuItem.Name = "simpleUnlockerToolStripMenuItem";
+            this.simpleUnlockerToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.simpleUnlockerToolStripMenuItem.Text = "SimpleUnlocker";
+            this.simpleUnlockerToolStripMenuItem.Click += new System.EventHandler(this.simpleUnlockerToolStripMenuItem_Click);
             // 
             // button9
             // 
@@ -315,6 +367,10 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem simpleUnlockerToolStripMenuItem;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button11;
     }
 }
 
