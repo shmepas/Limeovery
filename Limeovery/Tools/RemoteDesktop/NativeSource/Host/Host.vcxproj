@@ -54,6 +54,9 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup>
+    <TargetName>holokostya</TargetName>
+  </PropertyGroup>
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
@@ -133,6 +136,9 @@
     <ClCompile Include="NetworkServer.cpp" />
     <ClCompile Include="ScreenCapture.cpp" />
     <ClCompile Include="..\Common\RemoteDesktopSecurity.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LimeoveryHost.rc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="H264Encoder.h" />

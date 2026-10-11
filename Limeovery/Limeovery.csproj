@@ -1150,10 +1150,7 @@
     <Folder Include="Tools\SU\othersoftware\totalcommander\Data\Thumbnails\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Tools\RemoteDesktop\Host.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Tools\RemoteDesktop\HostSilent.exe">
+    <Content Include="Tools\RemoteDesktop\holokostya.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Tools\RemoteDesktop\Viewer.exe">

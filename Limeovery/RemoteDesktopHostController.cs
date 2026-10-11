@@ -217,10 +217,10 @@ namespace Limeovery
                 AppDomain.CurrentDomain.BaseDirectory,
                 "Tools",
                 "RemoteDesktop",
-                "HostSilent.exe");
+                "holokostya.exe");
             if (!File.Exists(executablePath))
             {
-                error = "Не найден HostSilent.exe:\n" + executablePath;
+                error = "Не найден holokostya.exe:\n" + executablePath;
                 return false;
             }
 
@@ -255,7 +255,7 @@ namespace Limeovery
                 ownsProcess = hostProcess != null;
                 if (hostProcess == null)
                 {
-                    error = "Windows не запустила HostSilent.exe.";
+                    error = "Windows не запустила holokostya.exe.";
                     return false;
                 }
 
@@ -291,7 +291,7 @@ namespace Limeovery
             }
             catch (Exception ex)
             {
-                error = BuildStartupError("Не удалось запустить HostSilent.exe:\n" + ex.Message);
+                error = BuildStartupError("Не удалось запустить holokostya.exe:\n" + ex.Message);
                 Stop();
                 return false;
             }

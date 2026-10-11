@@ -32,6 +32,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ResourceCompile Include="LimeoveryHost.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
+    <None Include="LimeoveryHost.ico">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="ScreenCapture.h">
       <Filter>Capture</Filter>
     </ClInclude>
