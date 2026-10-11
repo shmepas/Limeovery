@@ -229,32 +229,53 @@ bool H264Encoder::Initialize(
 
     std::cout << "Hardware H.264 encoders found: " << activationCount << "\n";
 
-    Microsoft::WRL::ComPtr<IMFActivate> activate;
-    activate = activations[0];
+    HRESULT lastActivationError = E_FAIL;
+    UINT32 selectedEncoderIndex = activationCount;
+    for (UINT32 i = 0; i < activationCount; ++i)
+    {
+        Microsoft::WRL::ComPtr<IMFActivate> candidate = activations[i];
+        std::wstring candidateName = L"unnamed hardware H.264 MFT";
+        WCHAR* friendlyName = nullptr;
+        UINT32 friendlyNameLength = 0;
+        if (SUCCEEDED(candidate->GetAllocatedString(
+            MFT_FRIENDLY_NAME_Attribute,
+            &friendlyName,
+            &friendlyNameLength)))
+        {
+            candidateName = friendlyName;
+            CoTaskMemFree(friendlyName);
+        }
+
+        std::wcout << L"Trying hardware encoder " << (i + 1) << L"/"
+            << activationCount << L": " << candidateName << L"\n";
+
+        hr = candidate->ActivateObject(IID_PPV_ARGS(&encoder));
+        if (SUCCEEDED(hr))
+        {
+            encoderName = candidateName;
+            selectedEncoderIndex = i;
+            break;
+        }
+
+        lastActivationError = hr;
+        std::wcerr << L"Could not activate " << candidateName << L" (HRESULT 0x"
+            << std::hex << static_cast<unsigned long>(hr) << std::dec << L").\n";
+    }
+
     for (UINT32 i = 0; i < activationCount; ++i)
     {
         activations[i]->Release();
     }
     CoTaskMemFree(activations);
 
-    WCHAR* friendlyName = nullptr;
-    UINT32 friendlyNameLength = 0;
-    if (SUCCEEDED(activate->GetAllocatedString(
-        MFT_FRIENDLY_NAME_Attribute,
-        &friendlyName,
-        &friendlyNameLength)))
+    if (!encoder)
     {
-        encoderName = friendlyName;
-        std::wcout << L"Selected encoder: " << encoderName << L"\n";
-        CoTaskMemFree(friendlyName);
-    }
-
-    hr = activate->ActivateObject(IID_PPV_ARGS(&encoder));
-    if (FAILED(hr))
-    {
-        LogHRESULT("ActivateObject", hr);
+        LogHRESULT("All hardware H.264 encoder activations failed", lastActivationError);
         return false;
     }
+
+    std::wcout << L"Selected encoder: " << encoderName << L" (candidate "
+        << (selectedEncoderIndex + 1) << L")\n";
 
     // Force-keyframe support is optional in ICodecAPI. The encoder remains
     // usable if this particular hardware MFT does not expose that property.

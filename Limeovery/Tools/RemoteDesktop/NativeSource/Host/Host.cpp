@@ -34,6 +34,12 @@
 
 int main(int argc, char* argv[])
 {
+    // Host is launched with redirected stdout/stderr by Limeovery. Flush every
+    // diagnostic immediately so startup failures are available in Host.log.
+    std::cout << std::unitbuf;
+    std::cerr << std::unitbuf;
+    std::wcout << std::unitbuf;
+
     // Keep the host's diagnostic console hidden when launched directly or by an
     // older Limeovery build. The Limeovery window reports the Host process state.
     if (const HWND consoleWindow = GetConsoleWindow())
@@ -144,6 +150,10 @@ int main(int argc, char* argv[])
         MFShutdown();
         return 1;
     }
+
+    // The UI waits for this line instead of treating Process.Start as proof
+    // that capture, encoder and network listener all initialized successfully.
+    std::cout << "LIMEOVERY_HOST_READY\n";
 
     std::cout << "Waiting for Viewer on port " << listenPort << "...\n";
     if (!server.AcceptClient(devicePin))

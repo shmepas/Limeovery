@@ -89,10 +89,14 @@ namespace Limeovery
             hostStatusLabel = new Label
             {
                 Location = new Point(18, 440),
-                Size = new Size(664, 24),
+                Size = new Size(490, 24),
                 ForeColor = Color.FromArgb(180, 220, 180)
             };
             Controls.Add(hostStatusLabel);
+
+            var hostLogButton = CreateButton("Лог Host", 520, 436, 162);
+            hostLogButton.Click += (sender, args) => OpenHostLog();
+            Controls.Add(hostLogButton);
 
             Controls.Add(new Label
             {
@@ -343,7 +347,30 @@ namespace Limeovery
 
             hostStatusLabel.Text = running
                 ? "Host активен на TCP-порту " + VideoPort + "; закрой Limeovery, чтобы остановить его."
-                : "Host выключен.";
+                : hostController.LastExitSummary == null
+                    ? "Host выключен."
+                    : "Host завершился. Открой журнал для причины.";
+        }
+
+        private void OpenHostLog()
+        {
+            string logPath = hostController.HostLogPath;
+            if (!File.Exists(logPath))
+            {
+                MessageBox.Show(this, "Журнал Host пока не создан. Запусти Host, чтобы получить диагностику.",
+                    "Удалённый экран", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            try
+            {
+                Process.Start(new ProcessStartInfo { FileName = logPath, UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Не удалось открыть журнал:\n" + ex.Message,
+                    "Удалённый экран", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void UpdateConnectButton()

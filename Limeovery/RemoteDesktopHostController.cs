@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using Microsoft.Win32;
 
 namespace Limeovery
@@ -14,6 +15,22 @@ namespace Limeovery
         private const string ProtectedDevicePinValue = "ProtectedDevicePin";
         private Process hostProcess;
         private bool ownsProcess;
+        private readonly ManualResetEventSlim hostReady = new ManualResetEventSlim(false);
+        private readonly object logLock = new object();
+        private readonly StringBuilder recentOutput = new StringBuilder();
+        private StreamWriter logWriter;
+        private string hostLogPath;
+        private bool exitLogged;
+
+        private const string ReadyMarker = "LIMEOVERY_HOST_READY";
+        private const int StartupTimeoutSeconds = 25;
+
+        public string HostLogPath
+        {
+            get { return hostLogPath ?? GetDefaultHostLogPath(); }
+        }
+
+        public string LastExitSummary { get; private set; }
 
         public static bool AutoStartEnabled
         {
@@ -44,7 +61,20 @@ namespace Limeovery
                 }
                 try
                 {
-                    return !hostProcess.HasExited;
+                    if (!hostProcess.HasExited)
+                    {
+                        return true;
+                    }
+
+                    if (!exitLogged)
+                    {
+                        hostProcess.WaitForExit();
+                        int exitCode = hostProcess.ExitCode;
+                        AppendHostOutput("INFO", "Host exited with code " + exitCode + ".");
+                        LastExitSummary = BuildStartupError("Host завершился (код " + exitCode + ").");
+                        exitLogged = true;
+                    }
+                    return false;
                 }
                 catch
                 {
@@ -196,6 +226,12 @@ namespace Limeovery
 
             try
             {
+                BeginLog(executablePath);
+                hostReady.Reset();
+                recentOutput.Clear();
+                exitLogged = false;
+                LastExitSummary = null;
+
                 string devicePin = GetOrCreateDevicePin();
                 if (hostProcess != null)
                 {
@@ -209,6 +245,10 @@ namespace Limeovery
                     WorkingDirectory = Path.GetDirectoryName(executablePath),
                     UseShellExecute = false,
                     RedirectStandardInput = true,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    StandardOutputEncoding = Encoding.UTF8,
+                    StandardErrorEncoding = Encoding.UTF8,
                     CreateNoWindow = true,
                     WindowStyle = ProcessWindowStyle.Hidden
                 });
@@ -218,29 +258,133 @@ namespace Limeovery
                     error = "Windows не запустила HostSilent.exe.";
                     return false;
                 }
+
+                hostProcess.OutputDataReceived += HostOutputReceived;
+                hostProcess.ErrorDataReceived += HostErrorReceived;
+                hostProcess.BeginOutputReadLine();
+                hostProcess.BeginErrorReadLine();
                 hostProcess.StandardInput.WriteLine(devicePin);
                 hostProcess.StandardInput.Flush();
                 hostProcess.StandardInput.Close();
+
+                DateTime deadline = DateTime.UtcNow.AddSeconds(StartupTimeoutSeconds);
+                while (!hostReady.Wait(100))
+                {
+                    if (hostProcess.HasExited)
+                    {
+                        hostProcess.WaitForExit();
+                        error = BuildStartupError("Host завершился во время запуска (код " +
+                            hostProcess.ExitCode + ").");
+                        Stop();
+                        return false;
+                    }
+                    if (DateTime.UtcNow >= deadline)
+                    {
+                        error = BuildStartupError("Host не сообщил о готовности за " +
+                            StartupTimeoutSeconds + " секунд.");
+                        Stop();
+                        return false;
+                    }
+                }
+
                 return true;
             }
             catch (Exception ex)
             {
+                error = BuildStartupError("Не удалось запустить HostSilent.exe:\n" + ex.Message);
                 Stop();
-                error = "Не удалось запустить HostSilent.exe:\n" + ex.Message;
                 return false;
             }
         }
 
-        public void Stop()
+        private void BeginLog(string executablePath)
         {
-            if (hostProcess == null)
+            hostLogPath = GetDefaultHostLogPath();
+            string directory = Path.GetDirectoryName(hostLogPath);
+            Directory.CreateDirectory(directory);
+            lock (logLock)
+            {
+                if (logWriter != null)
+                {
+                    logWriter.Dispose();
+                }
+                logWriter = new StreamWriter(hostLogPath, false, new UTF8Encoding(false));
+                logWriter.AutoFlush = true;
+                recentOutput.Clear();
+                WriteLogLine("Starting Host: " + executablePath);
+                WriteLogLine("Windows: " + Environment.OSVersion.VersionString +
+                    "; Limeovery UI process architecture: " + (Environment.Is64BitProcess ? "x64" : "x86"));
+            }
+        }
+
+        private static string GetDefaultHostLogPath()
+        {
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "Limeovery", "Logs", "Host.log");
+        }
+
+        private void HostOutputReceived(object sender, DataReceivedEventArgs args)
+        {
+            if (args.Data == null)
             {
                 return;
             }
+            AppendHostOutput("OUT", args.Data);
+            if (string.Equals(args.Data.Trim(), ReadyMarker, StringComparison.Ordinal))
+            {
+                hostReady.Set();
+            }
+        }
 
+        private void HostErrorReceived(object sender, DataReceivedEventArgs args)
+        {
+            if (args.Data != null)
+            {
+                AppendHostOutput("ERR", args.Data);
+            }
+        }
+
+        private void AppendHostOutput(string stream, string line)
+        {
+            lock (logLock)
+            {
+                WriteLogLine(stream + ": " + line);
+                recentOutput.AppendLine(line);
+                if (recentOutput.Length > 12000)
+                {
+                    recentOutput.Remove(0, recentOutput.Length - 12000);
+                }
+            }
+        }
+
+        private void WriteLogLine(string line)
+        {
+            if (logWriter != null)
+            {
+                logWriter.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + " " + line);
+            }
+        }
+
+        private string BuildStartupError(string summary)
+        {
+            var message = new StringBuilder(summary);
+            lock (logLock)
+            {
+                if (recentOutput.Length > 0)
+                {
+                    message.AppendLine().AppendLine().AppendLine("Последние сообщения Host:")
+                        .Append(recentOutput.ToString().Trim());
+                }
+                message.AppendLine().AppendLine("Полный журнал: ").Append(HostLogPath);
+            }
+            return message.ToString();
+        }
+
+        public void Stop()
+        {
             try
             {
-                if (ownsProcess && !hostProcess.HasExited)
+                if (hostProcess != null && ownsProcess && !hostProcess.HasExited)
                 {
                     // Host is a console process and may have no main window to receive CloseMainWindow.
                     // Stop it immediately when Limeovery closes.
@@ -254,8 +398,19 @@ namespace Limeovery
             }
             finally
             {
-                hostProcess.Dispose();
-                hostProcess = null;
+                if (logWriter != null)
+                {
+                    lock (logLock)
+                    {
+                        logWriter.Dispose();
+                        logWriter = null;
+                    }
+                }
+                if (hostProcess != null)
+                {
+                    hostProcess.Dispose();
+                    hostProcess = null;
+                }
                 ownsProcess = false;
             }
         }
@@ -263,6 +418,7 @@ namespace Limeovery
         public void Dispose()
         {
             Stop();
+            hostReady.Dispose();
         }
     }
 }
