@@ -28,7 +28,67 @@ namespace Limeovery
         public static string TargetIP = "192.168.3.19";
         public static int TargetPort = 5000;
 
-        public Form1() { InitializeComponent(); StartServer(); }
+        private readonly RemoteDesktopHostController remoteHost = new RemoteDesktopHostController();
+        private RemoteDesktopPresenceServer presenceServer;
+        private Button remoteDesktopButton;
+        private System.Windows.Forms.Timer hostStatusTimer;
+
+        public Form1()
+        {
+            InitializeComponent();
+            AddRemoteDesktopButton();
+            presenceServer = new RemoteDesktopPresenceServer(() => remoteHost.IsRunning);
+            presenceServer.Start();
+            hostStatusTimer = new System.Windows.Forms.Timer { Interval = 1000 };
+            hostStatusTimer.Tick += (sender, args) => UpdateRemoteDesktopButtonStatus();
+            hostStatusTimer.Start();
+            StartServer();
+            FormClosed += (sender, args) =>
+            {
+                hostStatusTimer.Stop();
+                hostStatusTimer.Dispose();
+                presenceServer.Dispose();
+                remoteHost.Dispose();
+            };
+        }
+
+        private void AddRemoteDesktopButton()
+        {
+            remoteDesktopButton = new Button
+            {
+                Name = "buttonRemoteDesktop",
+                Text = "Удалённый экран",
+                Location = new Point(571, 160),
+                Size = new Size(205, 34),
+                FlatStyle = FlatStyle.Popup,
+                BackColor = Color.FromArgb(23, 77, 39),
+                ForeColor = Color.FromArgb(220, 220, 220),
+                Font = new Font("Microsoft Sans Serif", 10F),
+                Cursor = Cursors.Hand
+            };
+            remoteDesktopButton.Click += (sender, args) =>
+            {
+                using (var dialog = new RemoteDesktopForm(remoteHost, presenceServer))
+                {
+                    dialog.ShowDialog(this);
+                }
+                UpdateRemoteDesktopButtonStatus();
+            };
+            groupBox1.Controls.Add(remoteDesktopButton);
+            UpdateRemoteDesktopButtonStatus();
+        }
+
+        private void UpdateRemoteDesktopButtonStatus()
+        {
+            if (remoteDesktopButton != null)
+            {
+                bool running = remoteHost.IsRunning;
+                remoteDesktopButton.Text = running ? "Host: активен" : "Host: выключен";
+                remoteDesktopButton.BackColor = running
+                    ? Color.FromArgb(23, 110, 55)
+                    : Color.FromArgb(70, 70, 70);
+            }
+        }
 
         private void StartServer()
         {
@@ -73,7 +133,21 @@ namespace Limeovery
             catch (Exception ex) { MessageBox.Show("Ошибка маскировки: " + ex.Message); }
         }
 
-        private void Form1_Load(object sender, EventArgs e) { }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            if (!RemoteDesktopHostController.AutoStartEnabled)
+            {
+                return;
+            }
+
+            string error;
+            if (!remoteHost.Start(out error))
+            {
+                MessageBox.Show("Не удалось автоматически запустить Host:\n" + error,
+                    "Удалённый экран", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            UpdateRemoteDesktopButtonStatus();
+        }
         private void button1_Click(object sender, EventArgs e) { }
         private void button3_Click(object sender, EventArgs e) { }
         private void button4_Click(object sender, EventArgs e) { }
