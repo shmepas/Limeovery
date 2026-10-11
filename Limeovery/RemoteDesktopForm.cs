@@ -19,6 +19,7 @@ namespace Limeovery
         private readonly CheckBox hostEnabledBox;
         private readonly Label hostStatusLabel;
         private readonly Label discoveryStatusLabel;
+        private readonly TextBox devicePinBox;
         private readonly System.Windows.Forms.Timer refreshTimer;
         private bool refreshing;
         private bool updatingHostToggle;
@@ -28,7 +29,7 @@ namespace Limeovery
             hostController = controller;
             presenceServerError = presenceServer == null ? "Служба обнаружения не создана." : presenceServer.Error;
             Text = "Устройства Limeovery";
-            ClientSize = new Size(700, 520);
+            ClientSize = new Size(700, 590);
             StartPosition = FormStartPosition.CenterParent;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
@@ -93,10 +94,57 @@ namespace Limeovery
             };
             Controls.Add(hostStatusLabel);
 
+            Controls.Add(new Label
+            {
+                Text = "Постоянный PIN:",
+                Location = new Point(18, 470),
+                Size = new Size(108, 26),
+                ForeColor = ForeColor,
+                TextAlign = ContentAlignment.MiddleLeft
+            });
+            devicePinBox = new TextBox
+            {
+                Location = new Point(127, 470),
+                Size = new Size(190, 25),
+                ReadOnly = true,
+                ShortcutsEnabled = false,
+                Font = new Font("Consolas", 11F, FontStyle.Bold),
+                Text = RemoteDesktopHostController.GetOrCreateDevicePin()
+            };
+            Controls.Add(devicePinBox);
+
+            var copyPinButton = CreateButton("Копировать PIN", 328, 466, 142);
+            copyPinButton.Click += (sender, args) =>
+            {
+                try
+                {
+                    Clipboard.SetText(devicePinBox.Text);
+                    discoveryStatusLabel.Text = "PIN скопирован. Передавайте его только доверенному человеку.";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, "Не удалось скопировать PIN:\n" + ex.Message,
+                        "Удалённый экран", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            };
+            Controls.Add(copyPinButton);
+
+            var regeneratePinButton = CreateButton("Сменить PIN", 481, 466, 155);
+            regeneratePinButton.Click += RegenerateDevicePin;
+            Controls.Add(regeneratePinButton);
+
+            Controls.Add(new Label
+            {
+                Text = "PIN хранится в профиле Windows. Новый PIN отзовёт старый и перезапустит Host.",
+                Location = new Point(18, 498),
+                Size = new Size(664, 30),
+                ForeColor = Color.FromArgb(190, 200, 215)
+            });
+
             discoveryStatusLabel = new Label
             {
                 Text = "Проверяю локальную сеть и Tailscale…",
-                Location = new Point(18, 470),
+                Location = new Point(18, 535),
                 Size = new Size(664, 38),
                 ForeColor = Color.FromArgb(190, 200, 215)
             };
@@ -316,6 +364,12 @@ namespace Limeovery
                 return;
             }
 
+            string pin = PromptForDevicePin(this);
+            if (pin == null)
+            {
+                return;
+            }
+
             string viewerPath = Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory,
                 "Tools",
@@ -330,19 +384,126 @@ namespace Limeovery
 
             try
             {
-                Process.Start(new ProcessStartInfo
+                Process viewer = Process.Start(new ProcessStartInfo
                 {
                     FileName = viewerPath,
-                    Arguments = "--address " + device.Address + " --port " + device.Port,
+                    Arguments = "--address " + device.Address + " --port " + device.Port + " --pin-stdin",
                     WorkingDirectory = Path.GetDirectoryName(viewerPath),
-                    UseShellExecute = true
+                    UseShellExecute = false,
+                    RedirectStandardInput = true,
+                    CreateNoWindow = true,
+                    WindowStyle = ProcessWindowStyle.Hidden
                 });
+                if (viewer == null)
+                {
+                    MessageBox.Show(this, "Windows не запустила Viewer.exe.",
+                        "Удалённый экран", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                viewer.StandardInput.WriteLine(pin);
+                viewer.StandardInput.Flush();
+                viewer.StandardInput.Close();
                 discoveryStatusLabel.Text = "Viewer подключается к " + device.Name + " (" + device.Address + ").";
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, "Не удалось запустить Viewer:\n" + ex.Message,
                     "Удалённый экран", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void RegenerateDevicePin(object sender, EventArgs e)
+        {
+            DialogResult answer = MessageBox.Show(
+                this,
+                "Старый PIN перестанет работать. Host будет перезапущен с новым PIN. Продолжить?",
+                "Сменить PIN устройства",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+            if (answer != DialogResult.Yes)
+            {
+                return;
+            }
+
+            bool restartHost = hostController.IsRunning;
+            try
+            {
+                hostController.Stop();
+                devicePinBox.Text = RemoteDesktopHostController.GenerateAndSaveDevicePin();
+                if (restartHost)
+                {
+                    string error;
+                    if (!hostController.Start(out error))
+                    {
+                        UpdateHostStatus();
+                        MessageBox.Show(this,
+                            "PIN сменён, но Host не удалось перезапустить:\n" + error,
+                            "Удалённый экран", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                UpdateHostStatus();
+                discoveryStatusLabel.Text = "PIN сменён. Подключения со старым PIN больше не принимаются.";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Не удалось сменить PIN:\n" + ex.Message,
+                    "Удалённый экран", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private static string PromptForDevicePin(IWin32Window owner)
+        {
+            using (var dialog = new Form())
+            using (var label = new Label())
+            using (var pinBox = new TextBox())
+            using (var okButton = new Button())
+            using (var cancelButton = new Button())
+            {
+                dialog.Text = "PIN устройства";
+                dialog.ClientSize = new Size(360, 145);
+                dialog.StartPosition = FormStartPosition.CenterParent;
+                dialog.FormBorderStyle = FormBorderStyle.FixedDialog;
+                dialog.MaximizeBox = false;
+                dialog.MinimizeBox = false;
+                dialog.ShowInTaskbar = false;
+
+                label.Text = "Введите 12-значный постоянный PIN, показанный на Host.";
+                label.Location = new Point(16, 14);
+                label.Size = new Size(328, 40);
+                pinBox.Location = new Point(18, 58);
+                pinBox.Size = new Size(324, 25);
+                pinBox.MaxLength = 12;
+                pinBox.PasswordChar = '●';
+                pinBox.Font = new Font("Consolas", 12F, FontStyle.Bold);
+                okButton.Text = "Подключиться";
+                okButton.Location = new Point(122, 101);
+                okButton.Size = new Size(112, 30);
+                cancelButton.Text = "Отмена";
+                cancelButton.Location = new Point(244, 101);
+                cancelButton.Size = new Size(100, 30);
+                cancelButton.DialogResult = DialogResult.Cancel;
+
+                okButton.Click += (sender, args) =>
+                {
+                    if (pinBox.Text.Length != 12 || pinBox.Text.Any(character => character < '0' || character > '9'))
+                    {
+                        MessageBox.Show(dialog, "PIN должен состоять ровно из 12 цифр.",
+                            "PIN устройства", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        pinBox.Focus();
+                        return;
+                    }
+                    dialog.DialogResult = DialogResult.OK;
+                    dialog.Close();
+                };
+
+                dialog.Controls.Add(label);
+                dialog.Controls.Add(pinBox);
+                dialog.Controls.Add(okButton);
+                dialog.Controls.Add(cancelButton);
+                dialog.AcceptButton = okButton;
+                dialog.CancelButton = cancelButton;
+                return dialog.ShowDialog(owner) == DialogResult.OK ? pinBox.Text : null;
             }
         }
     }

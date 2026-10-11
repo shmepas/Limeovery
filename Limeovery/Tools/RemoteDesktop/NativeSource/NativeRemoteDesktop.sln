@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37614.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Host", "Host\Host.vcxproj", "{A44A74F6-CF94-4145-A892-C95DCEB81D19}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Viewer", "Viewer\Viewer.vcxproj", "{070B30D1-C1D8-44C5-81AA-8E610AD3CCFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A44A74F6-CF94-4145-A892-C95DCEB81D19}.Debug|x64.ActiveCfg = Debug|x64
+		{A44A74F6-CF94-4145-A892-C95DCEB81D19}.Debug|x64.Build.0 = Debug|x64
+		{A44A74F6-CF94-4145-A892-C95DCEB81D19}.Release|x64.ActiveCfg = Release|x64
+		{A44A74F6-CF94-4145-A892-C95DCEB81D19}.Release|x64.Build.0 = Release|x64
+		{070B30D1-C1D8-44C5-81AA-8E610AD3CCFD}.Debug|x64.ActiveCfg = Debug|x64
+		{070B30D1-C1D8-44C5-81AA-8E610AD3CCFD}.Debug|x64.Build.0 = Debug|x64
+		{070B30D1-C1D8-44C5-81AA-8E610AD3CCFD}.Release|x64.ActiveCfg = Release|x64
+		{070B30D1-C1D8-44C5-81AA-8E610AD3CCFD}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7CB543BE-1D31-4601-91E7-E6212ED92C59}
+	EndGlobalSection
+EndGlobal
